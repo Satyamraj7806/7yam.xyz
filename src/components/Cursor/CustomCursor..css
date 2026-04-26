@@ -1,0 +1,11 @@
+.gauntlet-cursor {
+  width: 64px;
+  height: 64px;
+  position: fixed; /* Stays on top of the screen */
+  pointer-events: none; /* Crucial: Mouse can 'click through' the image */
+  z-index: 9999;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%); /* Centers the image on the point of the mouse */
+  transition: transform 0.1s ease-out; /* Makes it feel 'smooth' and heavy */
+}

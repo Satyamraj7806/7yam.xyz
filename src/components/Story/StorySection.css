@@ -1,0 +1,364 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Share+Tech+Mono&display=swap');
+
+.story-wrapper {
+  position: relative;
+  z-index: 10;
+  color: white;
+  width: 100%;
+  background: transparent; 
+}
+.section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 120px auto;  
+}
+
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.corona-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.greeting-line {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 4vw, 3rem);
+  color:  #fcc200;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.25em;
+  margin-bottom: 12px;
+  min-height: 2.5rem;
+  font-weight: bolder;
+
+  animation: greetFadeIn 0.6s ease 0.1s both;
+}
+
+@keyframes greetFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cursor {
+  display: inline-block;
+  color: rgba(255,255,255,0.7);
+  animation: cursorBlink 0.75s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.name-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 0;
+
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.name-wrapper.name-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.name-main,
+.name-ghost {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.name-main {
+  position: relative;
+  color: #ffffff;
+  text-shadow:
+    0 0 60px rgba(255, 255, 255, 0.12),
+    0 0 120px rgba(200, 220, 255, 0.07);
+}
+
+.name-ghost {
+  position: absolute;
+  top: 0; left: 0;
+  pointer-events: none;
+}
+
+.name-ghost--r {
+  color: rgba(255, 60, 60, 0.45);
+  animation: chromaR 3.5s ease-in-out infinite;
+}
+
+.name-ghost--b {
+  color: rgba(60, 140, 255, 0.35);
+  animation: chromaB 3.5s ease-in-out infinite;
+}
+
+@keyframes chromaR {
+  0%   { transform: translate(-3px,  1px); opacity: 0.45; }
+  25%  { transform: translate(-1px, -1px); opacity: 0.2;  }
+  50%  { transform: translate( 3px,  0px); opacity: 0.45; }
+  75%  { transform: translate( 1px,  2px); opacity: 0.25; }
+  100% { transform: translate(-3px,  1px); opacity: 0.45; }
+}
+
+@keyframes chromaB {
+  0%   { transform: translate( 3px, -1px); opacity: 0.35; }
+  25%  { transform: translate( 1px,  1px); opacity: 0.18; }
+  50%  { transform: translate(-3px,  0px); opacity: 0.35; }
+  75%  { transform: translate(-1px, -2px); opacity: 0.22; }
+  100% { transform: translate( 3px, -1px); opacity: 0.35; }
+}
+
+.name-ping,
+.name-ping--2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+  animation: sonarPing 3s ease-out infinite;
+}
+
+.name-ping--2 {
+  animation-delay: 1.5s;
+}
+
+@keyframes sonarPing {
+  0%   { transform: translate(-50%, -50%) scale(0.8);  opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(2.2);  opacity: 0;   }
+}
+
+/* ── Aka line ── */
+.aka-line {
+  position: relative;
+  z-index: 2;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin-top: 22px;
+
+  animation: fadeSlideUp 0.8s ease 1.6s both;
+}
+
+.aka-line::before {
+  content: '— ';
+  opacity: 0.4;
+}
+.aka-line::after {
+  content: ' —';
+  opacity: 0.4;
+}
+
+.bio-tags {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding: 0 20px;
+}
+
+.bio-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+
+  padding: 7px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+
+  opacity: 0;
+  transform: translateY(14px);
+  animation: tagReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease,
+              transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bio-tag:hover {
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+}
+
+@keyframes tagReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bio-tag + .bio-tag::before {
+  content: '';
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: fadeSlideUp 1s ease 2.5s both;
+}
+
+.scroll-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  animation: scrollBounce 2s ease-in-out infinite;
+  box-shadow: 0 0 10px 2px rgba(255,255,255,0.12);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0);    opacity: 0.35; }
+  50%       { transform: translateY(12px); opacity: 0.7;  }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.full-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: transparent;
+}
+
+.about-card {
+  max-width: 64%;
+  min-width: 320px;
+  position: relative;
+  padding: 56px 52px;
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(0px) saturate(1.3);
+  -webkit-backdrop-filter: blur(0px) saturate(1.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+  box-shadow:
+    0 12px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.5s ease,
+              border-color 0.5s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.about-card-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-style: solid;
+  transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease;
+}
+
+.about-card:hover .about-card-corner {
+  width: 30px;
+  height: 30px;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.about-card-corner--tl { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+.about-card-corner--tr { top: -1px; right: -1px; border-width: 1.5px 1.5px 0 0; }
+.about-card-corner--bl { bottom: -1px; left: -1px; border-width: 0 0 1.5px 1.5px; }
+.about-card-corner--br { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+.about-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 32px;
+  line-height: 1;
+}
+
+.about-heading::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);
+  margin-top: 14px;
+}
+
+.about-para {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 300;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.03em;
+}
+
+.about-para p { margin: 0; }
+
+.about-card strong {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-card { max-width: 92%; padding: 36px 28px; }
+  .name-main, .name-ghost { font-size: clamp(2.8rem, 14vw, 5rem); }
+}

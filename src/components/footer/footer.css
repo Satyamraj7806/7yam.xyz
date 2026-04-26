@@ -1,0 +1,322 @@
+.site-footer {
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  margin-top: 120px;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+  max-width: 1400px; /* Prevents stretching too wide */
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.site-footer {
+  width: 100%;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+  margin-top: 150px;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* THE ANIMATED BORDER */
+.animated-top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.05), 
+    rgba(255, 255, 255, 0.5), 
+    rgba(255, 255, 255, 0.05), 
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: border-flow 4s linear infinite;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.footer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.15em;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 25px 0;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+  animation: status-pulse 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+.status-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 3px;
+}
+
+.footer-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.dim { color: rgba(255,255,255,0.1); }
+
+.footer-nav {
+  display: flex;
+  gap: 100px;
+}
+
+.nav-label {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.nav-col a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-col a:hover {
+  color: #fff;
+  transform: translateX(8px);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5px;
+}
+
+.footer-bottom {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.made-with-center {
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+}
+
+.heart-icon {
+  color: #ff3e3e;
+  display: inline-block;
+  animation: heart-throb 1.2s infinite ease-in-out;
+}
+
+/* ANIMATIONS */
+@keyframes border-flow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes status-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+@keyframes heart-throb {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px transparent); }
+  50% { transform: scale(1.2); filter: drop-shadow(0 0 5px rgba(255, 62, 62, 0.8)); }
+}
+
+/* Mobile Fix */
+@media (max-width: 850px) {
+  .footer-content { flex-direction: column; }
+  .footer-nav { gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+}
+
+
+.footer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.1em;
+  color: white;
+  margin: 0 0 10px 0;
+  line-height: 1;
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fff;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.status-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+}
+
+.footer-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 80px;
+}
+
+.nav-label {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 15px;
+}
+
+.nav-col a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.nav-col a:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-col a:hover .nav-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* BOTTOM SECTION */
+.footer-bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.made-with-center {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.heart-icon {
+  color: #ff4d4d;
+  display: inline-block;
+  animation: heart-beat 1.5s infinite ease-in-out;
+}
+
+.metadata-right {
+  text-align: right;
+}
+
+/* ANIMATIONS */
+@keyframes pulse-glow {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); text-shadow: 0 0 5px rgba(255, 77, 77, 0.5); }
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .footer-content { flex-direction: column; }
+  .footer-bottom { 
+    grid-template-columns: 1fr; 
+    gap: 15px; 
+    text-align: center; 
+  }
+  .metadata-right { text-align: center; }
+}
