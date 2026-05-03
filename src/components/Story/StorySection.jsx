@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './StorySection.css';
 
+/* ── Particle corona canvas behind the name ── */
 function CoronaCanvas() {
   const ref = useRef(null);
 
@@ -17,6 +18,7 @@ function CoronaCanvas() {
     resize();
     window.addEventListener('resize', resize);
 
+    /* Orbital dust particles */
     const particles = Array.from({ length: 160 }, () => {
       const angle  = Math.random() * Math.PI * 2;
       const radius = 120 + Math.random() * 220;
@@ -38,6 +40,7 @@ function CoronaCanvas() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      /* Nebula core glow — transparent bg compatible */
       const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 200);
       grad.addColorStop(0,   'rgba(255,255,255,0.018)');
       grad.addColorStop(0.4, 'rgba(180,210,255,0.010)');
@@ -47,6 +50,7 @@ function CoronaCanvas() {
       ctx.ellipse(cx, cy, 320, 180, 0, 0, Math.PI * 2);
       ctx.fill();
 
+      /* Pulse rings */
       for (let i = 0; i < 3; i++) {
         const phase = ((t * 0.4 + i * 120) % 360) / 360;
         const r = phase * 260;
@@ -58,6 +62,7 @@ function CoronaCanvas() {
         ctx.stroke();
       }
 
+      /* Orbital particles */
       particles.forEach(p => {
         p.angle += p.speed;
         const driftY = Math.sin(t * p.driftSpeed + p.drift) * 18;
@@ -106,6 +111,7 @@ function useTypewriter(text, speed = 70, startDelay = 300) {
   return { displayed, done };
 }
 
+/* ── Scramble hook — letters randomize then lock ── */
 function useScramble(finalText, startDelay = 900) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*';
   const [output, setOutput]   = useState('');
@@ -137,6 +143,7 @@ function useScramble(finalText, startDelay = 900) {
   return { output, visible };
 }
 
+/* ── Main component ── */
 export default function StorySection() {
   const { displayed: greeting, done: greetingDone } = useTypewriter('Hiii,  I am', 80, 200);
   const { output: name, visible: nameVisible }       = useScramble('SATYAM RAJ', 1200);
@@ -151,28 +158,37 @@ export default function StorySection() {
   return (
     <div className="story-wrapper">
 
+      {/* ── HERO ── */}
       <section className="hero-section">
 
+        {/* Orbital corona behind everything */}
         <CoronaCanvas />
 
+        {/* Greeting typewriter */}
         <div className="greeting-line" aria-label="Hiii, I am">
           {greeting}
           {!greetingDone && <span className="cursor">|</span>}
         </div>
 
+        {/* Name — chromatic aberration + scramble assembly */}
         <div className={`name-wrapper ${nameVisible ? 'name-visible' : ''}`}>
 
+          {/* RGB split ghost layers */}
           <h1 className="name-ghost name-ghost--r" aria-hidden="true">{name}</h1>
           <h1 className="name-ghost name-ghost--b" aria-hidden="true">{name}</h1>
 
+          {/* Real layer */}
           <h1 className="name-main">{name}</h1>
 
+          {/* Sonar ping under name */}
           <div className="name-ping" />
           <div className="name-ping name-ping--2" />
         </div>
 
+        {/* Aka */}
         <div className="aka-line">aka Sattuuu</div>
 
+        {/* Bio tags */}
         <div className="bio-tags">
           {bioTags.map((tag, i) => (
             <span
@@ -185,13 +201,15 @@ export default function StorySection() {
           ))}
         </div>
 
+        {/* Scroll hint */}
         <div className="scroll-hint">
           <div className="scroll-dot" />
         </div>
 
       </section>
 
-      <section className="full-page" id='about-section'>
+      {/* ── ABOUT ── */}
+      <section className="full-page">
         <div className="about-card">
           <div className="about-card-corner about-card-corner--tl" />
           <div className="about-card-corner about-card-corner--tr" />
@@ -201,7 +219,7 @@ export default function StorySection() {
           <h2 className="about-heading">About Me</h2>
           <div className="about-para">
             <p>
-              I'm <strong>Satyam</strong>. I'm a Computer Science student, working around cybersecurity.
+              I'm <strong>Satyam</strong>. I'm a Computer Science student, working around <strong>Cybersecurity</strong>.
               <br /><br />
               Most of my work is done on Linux, and I prefer using open-source tools over closed systems.
               The FOSS approach makes more sense to me — being able to see, modify, and actually understand
@@ -212,7 +230,7 @@ export default function StorySection() {
               <br /><br />
               Outside of this, I also work on <strong>photography</strong> and <strong>cinematography</strong>.
               <br /><br />
-              Still figuring things out, but that's the whole point {':)'}
+              Still figuring things out, <strong>but that's the whole point {':)'}</strong>
             </p>
           </div>
         </div>

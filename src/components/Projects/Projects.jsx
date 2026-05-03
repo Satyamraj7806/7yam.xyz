@@ -76,7 +76,7 @@ export default function ProjectSlider() {
   };
 
   return (
-    <section className="projects-section" id='projects-section'>
+    <section className="projects-section" id="projects-section">
 
       <div className="about-card">
 
@@ -99,7 +99,7 @@ export default function ProjectSlider() {
           </a>
         </div>
 
-        {/* SLIDER */}
+        {/* SLIDER CONTAINER */}
         <div className="scroll-container-wrapper">
           <div
             className="project-track"
@@ -138,8 +138,8 @@ export default function ProjectSlider() {
             ))}
           </div>
 
-          {/* PROGRESS BAR */}
-          {canScroll && (
+        {/* PROGRESS BAR */}
+        {canScroll && (
             <div className="scroll-indicator-wrapper">
               <div
                 className="scroll-progress-bar"
@@ -159,9 +159,9 @@ export default function ProjectSlider() {
           Visit my GitHub
         </a>
 
-        {/* ARROW */}
+        {/* SCROLL ARROW BUTTON */}
         {canScroll && (
-          <button className="scroll-arrow-btn" onClick={scrollToNext}>
+          <button className="scroll-arrow-btn" onClick={scrollToNext} aria-label="Scroll projects">
             →
           </button>
         )}

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./Photos.css";
 
+const INSTAGRAM_PAGE = "https://www.instagram.com/satyamframes_/";
 
 const photos = [
   {
@@ -11,43 +12,25 @@ const photos = [
   },
   {
     id: 2,
-    image: "./allphotos/festival1.png",
-    link: "https://www.instagram.com/satyamframes_/reel/DQZZ-hJkofl/",
+    image: "/./allphotos/wildlife1.jpeg",
+    link: "https://www.instagram.com/satyamframes_/p/DXhRwXjGdCk/",
     frame: "B-002"
   },
   {
     id: 3,
     image: "./allphotos/thumbnail1.png",
-    link: "https://www.instagram.com/satyamframes_/p/DWJI8NemVeX/",
+    link: "https://www.instagram.com/satyamframes_/reel/DQZZ-hJkofl/",
     frame: "C-003"
   },
   {
     id: 4,
-    image: "./allphotos/anugoonj3.jpeg",
+    image: "./allphotos/nature3.jpeg",
     link: "https://www.instagram.com/satyamframes_/p/DUfZNamEpbx/",
     frame: "D-004"
   },
   {
     id: 5,
     image: "./allphotos/aarti4.jpeg",
-    link: "https://www.instagram.com/satyamframes_/p/DXhRwXjGdCk/",
-    frame: "E-005"
-  },
-  {
-    id: 6,
-    image: "./allphotos/nature3.jpeg",
-    link: "https://www.instagram.com/satyamframes_/reel/DXE0bt1DUqe/",
-    frame: "E-005"
-  },
-  {
-    id: 7,
-    image: "./allphotos/nature6.jpeg",
-    link: "https://www.instagram.com/satyamframes_/p/DWJI8NemVeX/",
-    frame: "E-005"
-  },
-  {
-    id: 8,
-    image: "./allphotos/moon2.jpeg",
     link: "https://www.instagram.com/satyamframes_/p/DWJI8NemVeX/",
     frame: "E-005"
   }
@@ -68,7 +51,6 @@ const PhotosSlider = () => {
     sliderRef.current.scrollBy({ left: 360, behavior: "smooth" });
   };
 
-  /* Magnetic 3D tilt */
   const handleMouseMove = (e, id) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -86,92 +68,97 @@ const PhotosSlider = () => {
   };
 
   return (
-    <section className="photos" id="photos-section">
-      <div className="photo-wrapper">
-        <div className="photo-glass">
-          {/* SAME CORNERS */}
-          <div className="photo-corner photo-corner--tr" />
-          <div className="photo-corner photo-corner--bl" />
-          <div className="photo-corner photo-corner--br" />
-          <div className="photo-corner photo-corner--tl" />
+    <div className="photo-wrapper">
 
+      {/* Glass container — arrow is anchored here */}
+      <div className="photo-glass">
+
+        {/* Corner brackets */}
+        <div className="photo-corner photo-corner--tl" />
+        <div className="photo-corner photo-corner--tr" />
+        <div className="photo-corner photo-corner--bl" />
+        <div className="photo-corner photo-corner--br" />
+
+        {/* ── Header row — title left, Instagram link right ── */}
+        <div className="photo-header">
           <h2 className="photo-title">Photography</h2>
-
-          <div
-            className="photo-track"
-            ref={sliderRef}
-            onScroll={handleScroll}
+          <a
+            href={INSTAGRAM_PAGE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="photo-view-all"
           >
-            {photos.map((photo, index) => {
-              const tilt = tilts[photo.id] || { rotX: 0, rotY: 0 };
-              const isActive = !!(tilt.rotX || tilt.rotY);
-
-              return (
-                <div
-                  key={photo.id}
-                  className={`photo-card ${index === 0 ? "featured" : ""}`}
-                  style={{
-                    transform: `perspective(900px) rotateX(${tilt.rotX}deg) rotateY(${tilt.rotY}deg) scale(${isActive ? 1.05 : 1})`
-                  }}
-                  onClick={() => window.open(photo.link, "_blank")}
-                  onMouseMove={(e) => handleMouseMove(e, photo.id)}
-                  onMouseLeave={() => handleMouseLeave(photo.id)}
-                >
-                  <div className="photo-image-wrap">
-                    <img src={photo.image} alt="" />
-                  </div>
-
-                  <div className="photo-overlay" />
-
-                  <div className="photo-liquid" />
-
-                  <div className="photo-scanlines" />
-
-                  <div className="photo-vf" />
-
-                  <div className="photo-vf-br" />
-
-                  <div className="photo-frame-num">{photo.frame}</div>
-                </div>
-              );
-            })}
-
-            <div
-              className="photo-card view-all-card"
-              onClick={() => (window.location.href = "/photography")}
-            >
-              <div className="view-all-content">
-                <span>Explore More</span>
-                <div className="arrow">→</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="Photocard-insta-link">
-            <a
-              href="https://www.instagram.com/satyamframes_/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              More on Instagram →
-            </a>
-          </div>
-
+            view on instagram →
+          </a>
         </div>
 
+        {/* ── Scroll track ── */}
+        <div
+          className="photo-track"
+          ref={sliderRef}
+          onScroll={handleScroll}
+        >
+          {photos.map((photo, index) => {
+            const tilt = tilts[photo.id] || { rotX: 0, rotY: 0 };
+            const isActive = !!(tilt.rotX || tilt.rotY);
 
-        {/* Progress bar */}
+            return (
+              <div
+                key={photo.id}
+                className={`photo-card ${index === 0 ? "featured" : ""}`}
+                style={{
+                  transform: `perspective(900px) rotateX(${tilt.rotX}deg) rotateY(${tilt.rotY}deg) scale(${isActive ? 1.05 : 1})`
+                }}
+                onClick={() => window.open(photo.link, "_blank")}
+                onMouseMove={(e) => handleMouseMove(e, photo.id)}
+                onMouseLeave={() => handleMouseLeave(photo.id)}
+              >
+                <div className="photo-image-wrap">
+                  <img src={photo.image} alt="" />
+                </div>
+                <div className="photo-overlay" />
+                <div className="photo-liquid" />
+                <div className="photo-scanlines" />
+                <div className="photo-vf" />
+                <div className="photo-vf-br" />
+                <div className="photo-frame-num">{photo.frame}</div>
+              </div>
+            );
+          })}
+
+          {/* Explore more card at end of track */}
+          <div
+            className="photo-card view-all-card"
+            onClick={() => window.open(INSTAGRAM_PAGE, "_blank")}
+          >
+            <div className="view-all-content">
+              <span>View all</span>
+              <div className="view-all-arrow">→</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress bar — inside glass, below track */}
         <div className="photo-progress">
           <div style={{ width: `${scrollProgress}%` }} />
         </div>
 
-      
+        <a
+          href="https://www.instagram.com/satyamframes_/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="projects-subtitle"
+        >
+          Visit my Instagram
+        </a>
 
-        {/* Arrow */}
-        <div className="photo-arrow" onClick={scrollNext}>→</div>
+        {/* Arrow — absolute to .photo-glass, positioned at right-center of the TRACK */}
+        <button className="photo-arrow" onClick={scrollNext} aria-label="Scroll photos">
+          →
+        </button>
 
       </div>
-    </section>
+    </div>
   );
 };
 

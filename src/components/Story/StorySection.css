@@ -1,22 +1,24 @@
-
+/* ============================================================
+   STORY SECTION — depends on layout.css for .section & tokens
+   ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Share+Tech+Mono&display=swap');
 
+/* ── Wrapper ── */
 .story-wrapper {
   position: relative;
   z-index: 10;
   color: white;
   width: 100%;
-  background: transparent; 
-}
-.section {
-  width: 90%;
-  max-width: 1200px;
-  margin: 120px auto;  
+  background: transparent;
 }
 
+/* ══════════════════════════════════════════
+   HERO SECTION
+   ══════════════════════════════════════════ */
 .hero-section {
   height: 100vh;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,6 +27,7 @@
   position: relative;
   overflow: hidden;
   background: transparent;
+  /* No extra padding — height: 100vh already centers content */
 }
 
 .corona-canvas {
@@ -36,20 +39,20 @@
   z-index: 0;
 }
 
+/* ── Greeting ── */
 .greeting-line {
   position: relative;
   z-index: 2;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1rem, 4vw, 3rem);
-  color:  #fcc200;
+  font-weight: 700;
+  /* FIXED: minimum 1.4rem so it's readable on mobile */
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  color: #fcc200;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.25em;
-  margin-bottom: 12px;
-  min-height: 2.5rem;
-  font-weight: bolder;
-
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  min-height: 2rem;
   animation: greetFadeIn 0.6s ease 0.1s both;
 }
 
@@ -70,14 +73,14 @@
   50%       { opacity: 0; }
 }
 
+/* ── Name wrapper ── */
 .name-wrapper {
   position: relative;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 4px 0 0;
-
+  margin: 6px 0 0;
   opacity: 0;
   transform: scale(0.92);
   transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -88,12 +91,13 @@
   transform: scale(1);
 }
 
+/* FIXED: minimum 3rem so name stays big on mobile */
 .name-main,
 .name-ghost {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 11vw, 9rem);
+  font-size: clamp(3rem, 10vw, 9rem);
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1;
   margin: 0;
@@ -141,23 +145,19 @@
   100% { transform: translate( 3px, -1px); opacity: 0.35; }
 }
 
+/* Sonar ping */
 .name-ping,
 .name-ping--2 {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   pointer-events: none;
   animation: sonarPing 3s ease-out infinite;
 }
-
-.name-ping--2 {
-  animation-delay: 1.5s;
-}
+.name-ping--2 { animation-delay: 1.5s; }
 
 @keyframes sonarPing {
   0%   { transform: translate(-50%, -50%) scale(0.8);  opacity: 0.3; }
@@ -169,53 +169,47 @@
   position: relative;
   z-index: 2;
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
-  letter-spacing: 0.35em;
+  /* FIXED: minimum 0.9rem */
+  font-size: clamp(0.9rem, 2vw, 1.6rem);
+  letter-spacing: 0.3em;
   color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
-  margin-top: 22px;
-
+  margin-top: 18px;
   animation: fadeSlideUp 0.8s ease 1.6s both;
 }
 
-.aka-line::before {
-  content: '— ';
-  opacity: 0.4;
-}
-.aka-line::after {
-  content: ' —';
-  opacity: 0.4;
-}
+.aka-line::before { content: '— '; opacity: 0.4; }
+.aka-line::after  { content: ' —'; opacity: 0.4; }
 
+/* ── Bio tags ── */
 .bio-tags {
   position: relative;
   z-index: 2;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-top: 36px;
-  padding: 0 20px;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 0 16px;
+  max-width: 700px;
 }
 
 .bio-tag {
   font-family: 'Share Tech Mono', monospace;
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  letter-spacing: 0.2em;
+  /* FIXED: minimum 0.75rem — readable on all screens */
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
-
-  padding: 7px 16px;
+  padding: 8px 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(8px);
-
   opacity: 0;
   transform: translateY(14px);
   animation: tagReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-
-  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease,
+  transition: color 0.3s, border-color 0.3s, background 0.3s,
               transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -226,17 +220,12 @@
   transform: translateY(-3px);
 }
 
-@keyframes tagReveal {
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes tagReveal { to { opacity: 1; transform: translateY(0); } }
 
-.bio-tag + .bio-tag::before {
-  content: '';
-}
-
+/* ── Scroll hint ── */
 .scroll-hint {
   position: absolute;
-  bottom: 36px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -244,8 +233,7 @@
 }
 
 .scroll-dot {
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: rgba(255,255,255,0.35);
   animation: scrollBounce 2s ease-in-out infinite;
@@ -262,92 +250,83 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ══════════════════════════════════════════
+   ABOUT CARD
+   Uses .section from layout.css for width/margin
+   ══════════════════════════════════════════ */
 .full-page {
-  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 80px 20px;
   background: transparent;
+  /* No extra padding — .section margin handles vertical rhythm */
 }
 
 .about-card {
-  max-width: 64%;
-  min-width: 320px;
+  width: 100%;                 /* fills .section container */
   position: relative;
-  padding: 56px 52px;
+  padding: 52px 48px;
   box-sizing: border-box;
-
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(0px) saturate(1.3);
-  -webkit-backdrop-filter: blur(0px) saturate(1.3);
-
+  backdrop-filter: blur(2px) saturate(1.3);
+  -webkit-backdrop-filter: blur(2px) saturate(1.3);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 4px;
   box-shadow:
     0 12px 60px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-              box-shadow 0.5s ease,
-              border-color 0.5s ease;
+              box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
 .about-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: rgba(255, 255, 255, 0.18);
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+/* Corner brackets */
 .about-card-corner {
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 22px; height: 22px;
   border-color: rgba(255, 255, 255, 0.3);
   border-style: solid;
   transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease;
 }
-
-.about-card:hover .about-card-corner {
-  width: 30px;
-  height: 30px;
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.about-card-corner--tl { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
-.about-card-corner--tr { top: -1px; right: -1px; border-width: 1.5px 1.5px 0 0; }
-.about-card-corner--bl { bottom: -1px; left: -1px; border-width: 0 0 1.5px 1.5px; }
+.about-card:hover .about-card-corner { width: 30px; height: 30px; border-color: rgba(255,255,255,0.6); }
+.about-card-corner--tl { top: -1px;    left: -1px;  border-width: 1.5px 0 0 1.5px; }
+.about-card-corner--tr { top: -1px;    right: -1px; border-width: 1.5px 1.5px 0 0; }
+.about-card-corner--bl { bottom: -1px; left: -1px;  border-width: 0 0 1.5px 1.5px; }
 .about-card-corner--br { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
 
 .about-heading {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
   letter-spacing: 0.15em;
   color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 32px;
+  margin: 0 0 28px;
   line-height: 1;
 }
 
 .about-heading::after {
   content: '';
   display: block;
-  width: 50px;
-  height: 1px;
+  width: 50px; height: 1px;
   background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);
-  margin-top: 14px;
+  margin-top: 12px;
 }
 
 .about-para {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  /* FIXED: minimum 1rem */
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 300;
-  line-height: 2;
+  line-height: 1.9;
   color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .about-para p { margin: 0; }
@@ -357,8 +336,13 @@
   font-weight: 600;
 }
 
-/* ── Responsive ── */
+/* ── Responsive overrides ── */
 @media (max-width: 768px) {
-  .about-card { max-width: 92%; padding: 36px 28px; }
-  .name-main, .name-ghost { font-size: clamp(2.8rem, 14vw, 5rem); }
+  .about-card { padding: 36px 28px; }
+}
+
+@media (max-width: 480px) {
+  .about-card { padding: 28px 20px; }
+  .about-heading { margin-bottom: 20px; }
+  .about-para { line-height: 1.7; }
 }

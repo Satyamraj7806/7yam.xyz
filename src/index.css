@@ -1,37 +1,78 @@
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  background: var(--bg);
+
+/* ── Design tokens ── */
+:root {
+  --container-width: 95%;
+  --container-max:   1200px;
+
+  /* Section vertical rhythm */
+  --gap-section:  250px;   /* between major sections          */
+  --gap-inner:    55px;   /* inside a section (header→cards) */
+  --gap-sm:       20px;   /* between small elements          */
+
+  /* Breakpoints (reference only — used in media queries below) */
+  /* desktop  > 1024px  */
+  /* tablet   ≤ 1024px  */
+  /* phablet  ≤  768px  */
+  /* mobile   ≤  480px  */
 }
 
-canvas.p5Canvas {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  z-index: -1 !important;
+/* ── The ONE container class used by every section ── */
+.section {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin-top: var(--gap-section);
+  margin-bottom: var(--gap-section);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* First section on page — no top margin fighting the hero */
+.section:first-child { margin-top: 0; }
+
+/* ── Section heading — shared style across all sections ── */
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 var(--gap-inner) 0;
+  line-height: 1;
+}
+
+.section-title::after {
+  content: '';
   display: block;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);
+  margin-top: 12px;
 }
 
-section, 
-.full-page, 
-.hero-layer, 
-.about-layer,
-.app-container {
-  background-color: transparent !important;
-  background: none !important;
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  :root {
+    --gap-section: 64px;
+    --gap-inner:   32px;
+  }
 }
 
-#root {
-  background: transparent !important;
+/* ── Phablet ── */
+@media (max-width: 768px) {
+  :root {
+    --gap-section: 52px;
+    --gap-inner:   28px;
+    --container-width: 92%;
+  }
 }
 
-body {
-  background-color: transparent;
-  margin: 0;
-  
-}
-.about-card {
-  background: var(--glass);
-  backdrop-filter: blur(10px);
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  :root {
+    --gap-section: 44px;
+    --gap-inner:   22px;
+    --container-width: 94%;
+  }
 }

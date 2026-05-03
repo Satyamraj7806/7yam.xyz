@@ -17,22 +17,22 @@ function App() {
 
       <main className="content-wrapper">
         
-        <section className="view-section">
+        <section className="section" id="about">
           <StorySection />
         </section>
 
-        <section className="view-section">
+        <section className="section" id="projects">
           <ProjectSlider />
         </section>
-        <section className="view-section">
+        <section className="section" id="photos">
           <h2 className="section-header">/// PHOTOS</h2>
           <PhotosSlider />
         </section>
-        <section className="view-section">
+        <section className="section" id="contact">
           <h2 className="section-header">/// Contact</h2>
           <Contact />
         </section>
-        <section className="view-section">
+        <section  id="footer">
           <h2 className="section-header">/// Footer</h2>
           <Footer />
         </section>

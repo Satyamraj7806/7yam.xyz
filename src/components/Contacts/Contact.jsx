@@ -23,7 +23,7 @@ const Contact = () => {
 
         <div className="contact-header">
           <h2 className="contact-title">CONTACT</h2>
-          <span className="tech-subtitle">// ESTABLISH_CONNECTION</span>
+          <span className="tech-subtitle">Connect me anywhere</span>
         </div>
 
         <div className="contact-grid">
