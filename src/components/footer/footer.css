@@ -320,6 +320,48 @@
   text-align: right;
 }
 
+.visitor-counter {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+
+  margin-top: 18px;
+  padding-right: 12px;
+
+  position: relative;
+  z-index: 5;
+}
+
+/* Badge Image */
+.visitor-counter img {
+  height: 18px;
+
+  opacity: 0.6;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
+
+  filter:
+    grayscale(10%)
+    brightness(0.95);
+
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.visitor-counter img:hover {
+  transform: translateY(-2px) scale(1.04);
+
+  opacity: 1;
+
+  filter:
+    brightness(1.1)
+    drop-shadow(0 0 8px rgba(255,255,255,0.12));
+}
+
 /* ANIMATIONS */
 @keyframes pulse-glow {
   0% { transform: scale(1); opacity: 1; }

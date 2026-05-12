@@ -81,7 +81,7 @@ const NAV = [
       { name: "Email", href: "mailto:0786satyamraj@gmail.com" },
     ]
   },
-  
+
 ];
 
 export default function Footer() {
@@ -138,6 +138,17 @@ export default function Footer() {
             <span className="footer-made">
               Made with <span className="footer-heart">♥</span> by Satyam
             </span>
+          </div>
+          <div className="visitor-counter">
+            <a
+              href="https://visitorbadge.io/status?path=https%3A%2F%2Fwww.7yam.xyz%2F"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="visitor-counter">
+                <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fwww.7yam.xyz%2F&label=VISITORS&icon=heart-fill&color=%23212529&message=&style=flat&tz=Asia%2FKolkata"/>
+              </div>
+            </a>
           </div>
         </div>
 
